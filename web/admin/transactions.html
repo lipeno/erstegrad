@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  
+  <head>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <title>Transakcija</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.css"> 
+  </head>
+  
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#" style="padding-left: 40px">
+            <img alt="Logo-erstegrad" height="10" src="images/logo-erstegrad.png" width="150">
+          </a>
+          <div class="navbar-content">
+            <ul class="nav pull-right">
+              <li class="name" style="padding: 20px 10px"></li>
+              <li><a href="/erstegrad-parents" style="padding: 20px 20px">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well">
+            <p>
+              <b>Tip:</b> Provedite transakciju odabirom vlastitog računa, računa svog djeteta,
+              te iznosa koji želite ostaviti na štednju.</p>
+          </div>
+        </div>
+        <div class="span9">
+          <div class="row-fluid">
+            <div class="span4">
+              <h2>Račun</h2>
+              <p>Lista vlastitih računa u Erste banci</p>
+              <ul class="nav nav-pills nav-stacked" id="parent_accounts" >
+              </ul>
+              <img src="images/ajax-spinner.gif" style="display:none" id="ajax-spinner-parent" />
+            </div>
+            <div class="span4">
+              <h2>Djetetov račun</h2>
+              <p>Lista štednih računa djece</p>
+              <p></p>
+              <ul class="nav nav-pills nav-stacked" id="child_accounts">
+              </ul>
+              <a href="#" id="add_account_link">Dodaj račun</a>
+              <form id="add_account_form" style="display:none">
+                <label for="iban">Broj računa: <input type="text" name="iban" id="iban" /></label>
+                <input type="submit" value="Provjeri vlasnika" class="btn btn-main" />
+                <img src="images/ajax-spinner.gif" style="display:none" id="ajax-spinner-child" />
+              </form>
+              <div id="account_owner" style="display:none">
+                <p><input type="submit" value="Dodaj račun" class="btn btn-primary" id="add_account_button" /></p>
+              </div>
+              <p></p>
+              <div>
+                <br> 
+              </div>
+              <p></p>
+            </div>
+            <div class="span4">
+              <h2>Iznos</h2>
+              <p>Ukupna suma koja se prebacuje na štedni račun</p>
+              <p></p>
+              <input type="text" placeholder="Suma" id="suma">
+              <p>
+                <a class="btn btn-primary" id="suma_btn">Provedi transakciju</a>
+                <img src="images/ajax-spinner.gif" style="display:none" id="ajax-spinner-suma" />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+<script src="js/transactions.js"></script>
+</html>

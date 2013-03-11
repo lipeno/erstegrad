@@ -1,0 +1,60 @@
+<div class="span3">
+  <div class="well">
+    <p>
+      <b>Tip:</b> Prikaz svih priča.</p>
+  </div>
+</div>
+
+<div class="span9">
+  <div class="row-fluid">
+    <h1>Priče</h1>
+    <div class="hero-unit">
+      <p>
+        <br> 
+      </p>
+      <p>
+        <%= link_to "Dodaj novu priču...", new_story_path, { class: "btn btn-primary btn-large" } %>
+      </p>
+    </div>
+    
+    <% @stories.each do |story| %>
+      <div class="hero-unit">
+        <h2><%= story.title %></h2>
+        <p><%= story.description %></p>
+        <p>
+        <% @storyImages.each do |story_image| %>
+        <div class="media">
+          <%= link_to image_tag(story_image.image.url, size: "100x100"), story_image.image.url %>
+        </div>
+    <% end %>
+
+        </p>
+        <p>
+          <%= link_to 'Više...', story, { class: "btn btn-primary btn-large" } %>
+      <%= link_to 'Izbriši priču', story, method: :delete, data: { confirm: 'Jeste li sigurni?' }, class: "btn btn-danger btn-large" %>
+        </p>
+      </div>
+    <% end %>
+    <div class="pagination">
+      <ul>
+        <li>
+          <a href="#">Prije</a> 
+        </li>
+        <li>
+          <a href="#">1</a> 
+        </li>
+        <li>
+          <a href="#">2</a> 
+        </li>
+        <li>
+          <a href="#">3</a> 
+        </li>
+        <li>
+          <a href="#">4</a> 
+        </li>
+        <li>
+          <a href="#">Poslije</a> 
+        </li>
+      </ul>
+    </div>
+</div>

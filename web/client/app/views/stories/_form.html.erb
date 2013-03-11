@@ -1,0 +1,36 @@
+<%= form_for @story, html: { multipart: true } do |f| %>
+  <% if @story.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
+
+      <ul>
+      <% @story.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="control-group">
+    <%= f.label :title, "Naslov", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :description, "Opis", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description %>
+    </div>
+  </div>
+  
+  <%= f.fields_for :story_images do |story_image| %>
+    <% if story_image.object.new_record? %>
+      <%= story_image.file_field :image %>
+    <% end %>
+  <% end %>  
+  <div class="actions">
+    <br><%= f.submit "Pošalji", { class: "btn" } %>
+  </div>
+<% end %>
